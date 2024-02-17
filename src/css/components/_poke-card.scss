@@ -1,0 +1,117 @@
+@use "../quasar.variables" as v;
+@use "../abstracts/typo-mixins" as t;
+
+.poke-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    @include t.heading-h-1-regular;
+  }
+
+  &--container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding-block: 120px;
+  }
+
+  &--wrapper {
+    border: 1px solid v.$secondary;
+    flex: 1 0 19%;
+    max-width: 19%;
+    padding: 16px;
+    border-radius: 8px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: v.$secondary;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1023px) {
+      flex-basis: 30%;
+      max-width: 30%;
+    }
+
+    @media (max-width: 767px) {
+      flex-basis: 48%;
+      max-width: 48%;
+    }
+  }
+
+  &--image {
+    img {
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+    }
+  }
+
+  &--information {
+    &__name {
+      @include t.heading-h-6-regular;
+      padding-bottom: 12px;
+    }
+
+    &__types {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+
+      .abilities,
+      .weight {
+        p {
+          @include t.body-text-md-base-medium;
+        }
+
+        span {
+          @include t.body-text-sm-medium;
+          padding: 4px;
+          background-color: v.$info;
+        }
+      }
+
+      .abilities {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .weight {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      @media (max-width: 500px) {
+        flex-direction: column-reverse;
+        gap: 16px;
+      }
+    }
+  }
+
+  &--pagination {
+    margin-top: 48px;
+    display: flex;
+    gap: 8px;
+
+    button {
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background-color: transparent;
+      border-color: v.$secondary;
+      @include t.body-text-lg-medium;
+      line-height: 16px;
+
+      &:last-child {
+        background-color: v.$secondary;
+      }
+    }
+  }
+}
